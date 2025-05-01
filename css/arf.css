@@ -38,8 +38,8 @@ a, a:visited {
 
 .node circle {
   cursor: pointer;
-  fill: #000000;
-  stroke: steelblue;
+  fill: #d3d3d3;
+  stroke: #d3d3d3;
   stroke-width: 1.5px;
 }
 
