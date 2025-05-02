@@ -38,8 +38,8 @@ a, a:visited {
 
 .node circle {
   cursor: pointer;
-  fill: #d3d3d3;
-  stroke: #d3d3d3;
+  fill: #7D7F7C;
+  stroke: #7D7F7C;
   stroke-width: 1.5px;
 }
 
@@ -50,6 +50,6 @@ a, a:visited {
 
 path.link {
   fill: none;
-  stroke: #ccc;
+  stroke: #7D7F7C;
   stroke-width: 1px;
 }
