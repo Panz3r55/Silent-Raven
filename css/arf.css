@@ -38,18 +38,18 @@ a, a:visited {
 
 .node circle {
   cursor: pointer;
-  fill: #a9a9a9; /* medium grey */
-  stroke: #a9a9a9;
+  fill: #444444; /* dark grey background for nodes */
+  stroke: #444444;
   stroke-width: 1.5px;
 }
 
 .node text {
   font-size: 12px;
-  fill: #ffffff;
+  fill: #ffffff; /* white text */
 }
 
 path.link {
   fill: none;
-  stroke: #a9a9a9; /* medium grey */
+  stroke: #444444; /* dark grey lines */
   stroke-width: 1px;
 }
