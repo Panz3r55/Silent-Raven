@@ -1,38 +1,43 @@
 # Silent Raven Agency website
 
-One-page website for Silent Raven Agency, a creative studio that uses AI to build custom websites faster and more affordably.
+One-page site for Silent Raven Agency, a studio that builds custom websites for local businesses. AI drafts them fast. People make them yours.
+
+Live at https://silent-raven.vercel.app
 
 ## Files
 
 | File | What it is |
 | --- | --- |
 | `index.html` | The whole site: markup, styles and scripts in one file |
-| `raven2.webp` | Raven silhouette, cut out on a transparent background |
-| `wind.png` | Movement map for the feather animation: white areas move, black areas stay still (beak and eye) |
+| `assets/hero-scrub.mp4` | The hero video. It plays forward and backward as the visitor scrolls |
+| `assets/hero-poster.jpg` | First frame of the video, shown while it loads |
+| `assets/hero-ending.jpg` | The sharp final frame. Also used in the Proof section and for link previews |
+| `assets/hero-mobile.jpg` | The tall still image phones get instead of the video |
 
-No build step. Open `index.html` in a browser, or serve the folder with any static host (Vercel, Netlify, GitHub Pages).
+No build step, no framework. Open `index.html` through any static host. Opening the file directly from disk shows the still-image hero, because browsers block the video loader on `file://` addresses.
 
 ## Design
 
-- **Colors:** stone `#C1BBAE`, paper `#EEE9DE`, ink `#17130D`, ink soft `#524B3D`, orange `#F15A24`, orange for text `#A8360C`, wordmark `#B04E2A`. All are CSS variables at the top of `index.html`.
-- **Fonts (Google Fonts):** Archivo (headlines and wordmark, expanded width), Inter (body), JetBrains Mono (small uppercase labels).
-- **Hero:** the "silent raven" wordmark is drawn twice. The solid copy sits behind the raven photo and the outlined copy sits in front of it, so the letters turn into outlines where they cross the bird.
-- **Feather animation:** a small WebGL shader warps the raven image using `wind.png` as a mask, with gusts and a slow breathing motion. It pauses when the hero is off screen and is skipped for visitors who prefer reduced motion.
+- **Colors:** canvas `#0A1118`, panel `#111B23`, text `#ECE8DD`, secondary text `#A3B3B8`, accent orange `#F15A24`. All are CSS variables at the top of `index.html`.
+- **Fonts (Google Fonts):** Archivo at expanded width (headlines and wordmark), Instrument Sans (body), JetBrains Mono (small labels).
+- **Hero:** a scroll-driven video of the raven in fog. Phones, portrait tablets and visitors who prefer reduced motion get a designed still image and never download the video.
+- **Imagery:** the raven is a real photo. The fog and the motion were made with AI and directed by people. The footer says so.
 
 ## Page sections
 
-1. Hero: labels, wordmark, headline, supporting line
-2. How it works: AI drafts, people decide, you launch sooner
-3. Services
-4. Process (five steps)
-5. Work (placeholders)
-6. Contact form
-
-Also: a full-screen menu (Menu button) and an "Ask the Raven" button in the bottom-right corner, reserved for a future AI assistant.
+1. Hero: four short lines, then the headline and the call to action
+2. The usual story: three common complaints, each answered
+3. How it works
+4. Services
+5. Process, with a press-and-hold button that clears the fog off the five steps
+6. Proof
+7. Questions
+8. Contact form
 
 ## Still to do
 
-- Replace the bracketed placeholders: portfolio projects and reply time
-- Confirm the real email address (currently `hello@silentraven.agency`)
-- Connect the contact form to an inbox (it currently shows a "not connected yet" message)
-- Build the AI assistant behind "Ask the Raven"
+- **Connect the contact form to an inbox.** It is in preview mode and sends nothing. The thank-you message says so.
+- Add client projects and reviews to the Proof section as they launch.
+- If the site moves to a custom domain, update the two `og:` URLs marked `DEPLOY STEP` in `index.html`.
+
+The previous version of the site (the wordmark hero with the feather animation) is in this repository's history.
