@@ -12,17 +12,17 @@
 <!-- DEPLOY STEP: these two URLs must match the live address. Update both if the site moves to a custom domain. -->
 <meta property="og:url" content="https://silent-raven.vercel.app/">
 <meta property="og:image" content="https://silent-raven.vercel.app/assets/hero-ending.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A1118'/%3E%3Cpath d='M23 5C14 7 9 14 9 23l-2 4 4-2c9 0 15-7 12-20z' fill='%23ECE8DD'/%3E%3Cpath d='M9.5 23.5L20 10' stroke='%23F15A24' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A1118'/%3E%3Cpath d='M23 5C14 7 9 14 9 23l-2 4 4-2c9 0 15-7 12-20z' fill='%23ECE8DD'/%3E%3Cpath d='M9.5 23.5L20 10' stroke='%238FD0F2' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,600;125,800&family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,600;125,800&family=Lexend:wght@800&family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --canvas:#0A1118;
   --panel:#111B23;
-  --accent:#F15A24;
-  --accent-hover:#FF7A47;
-  --accent-muted:rgba(241,90,36,.30);
+  --accent:#8FD0F2;
+  --accent-hover:#B6E2F9;
+  --accent-muted:rgba(143,208,242,.30);
   --text-secondary:#A3B3B8;
   --text-primary:#ECE8DD;
   --line:rgba(163,179,184,.18);
@@ -33,6 +33,7 @@
   --pad:clamp(20px,5vw,72px);
   --max:1180px;
   --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --mark:"Lexend","Archivo",system-ui,sans-serif;
   --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -56,7 +57,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .env .mist{position:absolute;width:130vmax;height:84vmax;border-radius:50%;background:radial-gradient(closest-side,rgba(83,105,114,.36),rgba(48,65,73,.17) 55%,rgba(10,17,24,0) 100%);opacity:calc(var(--fog,1)*.95);will-change:transform}
 .env .m1{left:-42vmax;top:-30vmax;animation:drift1 84s var(--ease-soft) -22s infinite alternate}
 .env .m2{right:-52vmax;top:26vh;animation:drift2 112s var(--ease-soft) -47s infinite alternate}
-.env .ember{position:absolute;left:50%;bottom:-40vh;width:120vw;height:76vh;margin-left:-60vw;border-radius:50%;background:radial-gradient(closest-side,rgba(241,90,36,.22),rgba(241,90,36,.06) 55%,rgba(241,90,36,0));opacity:var(--ember,0)}
+.env .ember{position:absolute;left:50%;bottom:-40vh;width:120vw;height:76vh;margin-left:-60vw;border-radius:50%;background:radial-gradient(closest-side,rgba(143,208,242,.15),rgba(143,208,242,.05) 55%,rgba(143,208,242,0));opacity:var(--ember,0)}
 .env .grain,.stage .grain{position:absolute;inset:0;background-image:var(--grain);opacity:.07;pointer-events:none}
 @keyframes drift1{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(16vw,9vh,0) scale(1.12)}}
 @keyframes drift2{from{transform:translate3d(0,0,0) scale(1.08)}to{transform:translate3d(-18vw,-8vh,0) scale(1)}}
@@ -65,7 +66,9 @@ button,input,select,textarea{font:inherit;color:inherit}
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px var(--pad)}
 .nav::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(10,17,24,.74);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);opacity:0;transition:opacity .6s var(--ease-soft)}
 .nav.solid::before{opacity:1}
-.brand{font:800 19px/1 var(--display);font-stretch:125%;letter-spacing:-.01em;text-decoration:none;text-shadow:0 1px 10px rgba(5,9,14,.7)}
+.brand{font:800 16px/1 var(--mark);letter-spacing:-.01em;text-transform:uppercase;text-decoration:none}
+.nav .brand{opacity:0;pointer-events:none;transition:opacity .6s var(--ease-soft)}
+.nav.solid .brand{opacity:1;pointer-events:auto}
 .nav-links{display:flex;align-items:baseline;gap:30px}
 .nav-links a{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--text-primary);opacity:.82;text-shadow:0 1px 10px rgba(5,9,14,.8);transition:opacity .35s var(--ease-soft)}
 .nav-links a:hover{opacity:1}
@@ -92,21 +95,34 @@ main{position:relative;z-index:1}
 .stage.video-failed #heroVideo{display:none}
 .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s linear}
 .scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,9,14,.6) 0%,rgba(5,9,14,.3) 36%,rgba(5,9,14,0) 60%),radial-gradient(ellipse 120% 90% at 50% 45%,rgba(5,9,14,0) 40%,rgba(5,9,14,.5) 100%),linear-gradient(180deg,rgba(5,9,14,.5) 0%,rgba(5,9,14,0) 16%)}
-.band{position:absolute;left:var(--pad);top:50%;width:min(45vw,640px);transform:translateY(-50%);opacity:0;pointer-events:none;text-shadow:var(--tshadow)}
+.band{position:absolute;left:var(--pad);bottom:clamp(56px,10vh,112px);width:min(46vw,600px);opacity:0;pointer-events:none;text-shadow:var(--tshadow)}
 .band.live{pointer-events:auto}
 .band::before{content:"";position:absolute;inset:-36% -34% -36% -44%;z-index:-1;pointer-events:none;opacity:calc(.25 + .75*var(--k,1));background:radial-gradient(ellipse 70% 62% at 42% 50%,rgba(5,9,14,.68) 0%,rgba(5,9,14,.46) 46%,rgba(5,9,14,0) 76%)}
-.band .line,.band h1{font:800 clamp(34px,4.7vw,70px)/1.04 var(--display);font-stretch:125%;letter-spacing:-.02em;max-width:13ch}
-.band .sub{margin-top:1.3em;font:400 clamp(16px,1.35vw,19px)/1.55 var(--body);color:#DDE0DC;max-width:40ch}
-.band .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:22px 28px;margin-top:2em}
+.band .line,.band h1{font:800 clamp(26px,3.3vw,50px)/1.06 var(--display);font-stretch:125%;letter-spacing:-.02em;max-width:17ch}
+.ac{color:var(--accent)}
+.band .sub{margin-top:1.1em;font:400 clamp(16px,1.35vw,19px)/1.55 var(--body);color:#DDE0DC;max-width:40ch}
+.band .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:22px 28px;margin-top:1.7em}
 .band .btn{text-shadow:none}
 .w{display:inline-block}
+
+.wm{position:absolute;inset:0;pointer-events:none;opacity:0;transform:translateY(22px);transition:opacity 1.3s var(--ease-soft) .15s,transform 1.6s var(--ease) .15s}
+.stage.wm-on .wm{opacity:1;transform:none}
+.wm-fill,.wm-line{position:absolute;inset:0}
+.wm-fill{-webkit-mask:url(assets/raven-mask.png) center/cover no-repeat;mask:url(assets/raven-mask.png) center/cover no-repeat}
+.wm-t{position:absolute;left:var(--pad);right:var(--pad);top:clamp(150px,26vh,300px);font:800 var(--wm,12.2vw)/.84 var(--mark);letter-spacing:-.035em;white-space:nowrap;text-transform:uppercase}
+.wm-in{display:inline-block}
+.wm-fill .wm-t{color:var(--accent)}
+.wm-line .wm-t{color:transparent;-webkit-text-stroke:2px var(--accent)}
+.wm-w2{position:relative;display:inline-block}
+.wm-agency{position:absolute;right:.04em;top:100%;margin-top:.1em;font-size:.2em;line-height:1;letter-spacing:0;text-transform:lowercase;color:var(--accent);-webkit-text-stroke:0;text-shadow:0 1px 10px rgba(5,9,14,.6)}
+@media (max-height:700px){.wm-t{top:clamp(92px,19vh,150px)}}
 
 /* entrance 1, blur to sharp: words surface through mist */
 .fx-blur .stack{position:relative;display:block}
 .fx-blur .soft{position:absolute;inset:0;filter:blur(10px);opacity:calc((1 - var(--k,0))*.9)}
 .fx-blur .sharp{display:block;opacity:var(--k,0)}
 /* entrance 2, drift: phrases slide in from the right, with the fog */
-.fx-drift .line{max-width:none;font-size:clamp(28px,4vw,60px)}
+.fx-drift .line{max-width:none}
 .fx-drift .ph{display:block;white-space:nowrap;--kc:clamp(0,(var(--k,0) - var(--th,0))*2.4,1);opacity:var(--kc);transform:translateX(calc((1 - var(--kc))*52px))}
 /* entrance 3, halves parting, like the fog */
 .fx-part .half{display:inline-block;--kc:clamp(0,var(--k,0)*1.5,1);opacity:var(--kc)}
@@ -117,7 +133,7 @@ main{position:relative;z-index:1}
 .fx-rise .sub{--ks:clamp(0,(var(--k,0) - .62)*4,1);opacity:var(--ks);transform:translateY(calc((1 - var(--ks))*14px))}
 .fx-rise .cta-row{--kb:clamp(0,(var(--k,0) - .76)*5,1);opacity:var(--kb);transform:translateY(calc((1 - var(--kb))*14px))}
 
-.cue{position:absolute;left:var(--pad);bottom:34px;display:flex;align-items:center;gap:14px;font:500 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--text-primary);text-shadow:0 1px 3px rgba(5,9,14,.85);opacity:0;transition:opacity .8s var(--ease-soft)}
+.cue{position:absolute;right:var(--pad);bottom:34px;display:flex;align-items:center;gap:14px;font:500 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--text-primary);text-shadow:0 1px 3px rgba(5,9,14,.85);opacity:0;transition:opacity .8s var(--ease-soft)}
 .cue.on{opacity:.85}
 .cue i{display:block;width:44px;height:1px;background:currentColor;transform-origin:left;animation:cue 3.2s var(--ease-soft) -1s infinite}
 @keyframes cue{0%{transform:scaleX(0);opacity:0}35%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
@@ -128,18 +144,27 @@ main{position:relative;z-index:1}
 .static-hero .sbg{position:absolute;inset:0;background:var(--canvas) url(assets/hero-mobile.jpg) center bottom/cover no-repeat}
 .static-hero .sbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,9,14,.82) 0%,rgba(5,9,14,.62) 34%,rgba(5,9,14,.12) 62%,rgba(5,9,14,0) 100%)}
 .static-hero .inner{position:relative;max-width:560px;text-shadow:var(--tshadow)}
-.static-hero h1{font:800 clamp(36px,10.4vw,60px)/1.03 var(--display);font-stretch:125%;letter-spacing:-.02em;max-width:11ch}
-.static-hero p{margin-top:1.1em;font-size:17px;line-height:1.55;color:#DDE0DC;max-width:34ch}
-.static-hero .btn{margin-top:1.8em}
+.s-wm{font:800 clamp(52px,18.4vw,104px)/.86 var(--mark);letter-spacing:-.035em;text-transform:uppercase;color:var(--accent);text-shadow:0 2px 26px rgba(5,9,14,.55)}
+.s-wm span{display:block}
+.s-wm .r{position:relative;display:inline-block}
+.s-wm i{display:block;margin-top:.14em;font-style:normal;font-size:.2em;line-height:1;letter-spacing:0;text-transform:lowercase;text-align:right}
+.static-hero h1{margin-top:1.1em;font:800 clamp(25px,7.2vw,40px)/1.08 var(--display);font-stretch:125%;letter-spacing:-.02em}
+.static-hero .inner p:not(.s-wm){margin-top:1em;font-size:17px;line-height:1.55;color:#DDE0DC;max-width:34ch}
+.static-hero .btn{margin-top:1.5em}
 @media (orientation:landscape){
   .static-hero{justify-content:center;padding-top:96px}
+  .static-hero .inner{max-width:none}
+  .s-wm{font-size:clamp(40px,8.6vw,120px)}
+  .s-wm span{display:inline-block;vertical-align:top}
+  .s-wm span+span{margin-left:.24em}
   .static-hero .sbg{background-image:url(assets/hero-ending.jpg);background-position:center}
   .static-hero .sbg::after{background:linear-gradient(90deg,rgba(5,9,14,.8) 0%,rgba(5,9,14,.5) 40%,rgba(5,9,14,0) 66%)}
 }
 @media (orientation:landscape) and (max-height:560px){
   .static-hero{padding-top:74px;padding-bottom:26px}
-  .static-hero h1{font-size:clamp(26px,5.2vw,42px)}
-  .static-hero p{margin-top:.7em;font-size:15px;max-width:38ch}
+  .s-wm{font-size:clamp(34px,7vw,64px)}
+  .static-hero h1{margin-top:.7em;font-size:clamp(20px,3.4vw,30px)}
+  .static-hero .inner p:not(.s-wm){margin-top:.6em;font-size:15px;max-width:38ch}
   .static-hero .btn{margin-top:1.1em}
 }
 @media (max-width: 720px), (orientation: portrait) and (max-width: 1024px), (orientation: portrait) and (pointer: coarse), (orientation: landscape) and (pointer: coarse) and (max-height: 560px), (prefers-reduced-motion: reduce){
@@ -158,7 +183,7 @@ main{position:relative;z-index:1}
 .sec.in.done .rv{transition-delay:0s}
 .horizon{position:relative;height:1px;max-width:var(--max);margin:0 auto;background:linear-gradient(90deg,rgba(163,179,184,0),var(--line) 18%,var(--line) 82%,rgba(163,179,184,0))}
 .horizon i{position:absolute;left:18%;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:0;transform:translateX(0);transition:transform 2.6s var(--ease),opacity 1s var(--ease-soft)}
-.horizon i::after{content:"";position:absolute;inset:-7px;border-radius:50%;background:radial-gradient(closest-side,var(--accent-muted),rgba(241,90,36,0));opacity:.5}
+.horizon i::after{content:"";position:absolute;inset:-7px;border-radius:50%;background:radial-gradient(closest-side,var(--accent-muted),rgba(143,208,242,0));opacity:.5}
 .horizon.in i{opacity:1;transform:translateX(min(42vw,480px))}
 .horizon.live i::after{animation:pulse 4.6s var(--ease-soft) -1.2s infinite}
 @keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
@@ -215,7 +240,7 @@ main{position:relative;z-index:1}
 .hold circle{fill:none;stroke-width:2}
 .hold .track{stroke:var(--border)}
 .hold .fill{stroke:var(--accent);stroke-linecap:round;stroke-dasharray:289;stroke-dashoffset:calc(289 - 289*var(--p,0))}
-.hold::before{content:"";position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(closest-side,var(--accent-muted),rgba(241,90,36,0));opacity:.25}
+.hold::before{content:"";position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(closest-side,var(--accent-muted),rgba(143,208,242,0));opacity:.25}
 .process.live .hold::before{animation:pulse 4.2s var(--ease-soft) -1s infinite}
 .process.cleared .hold::before{animation:none;opacity:.15}
 .hold span{position:relative;display:block;padding:0 22px;font:500 11px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-align:center}
@@ -291,7 +316,7 @@ main{position:relative;z-index:1}
 /* ---------- H. footer ---------- */
 .foot{position:relative;z-index:1;padding:56px var(--pad) 44px;border-top:1px solid var(--line)}
 .foot .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px 56px;align-items:start}
-.foot .brand{font-size:22px;text-shadow:none}
+.foot .brand{font-size:22px}
 .foot .tagline{margin-top:.8em;color:var(--text-secondary)}
 .foot .ai{font-size:15px;line-height:1.6;color:var(--text-secondary);max-width:46ch}
 .foot .copy{grid-column:1/-1;margin-top:20px;font:500 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary)}
@@ -328,7 +353,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 </div>
 
 <nav class="nav" aria-label="Main">
-  <a class="brand" href="#top">silent raven</a>
+  <a class="brand" href="#top">Silent Raven</a>
   <div class="nav-links">
     <a href="#how">How it works</a>
     <a href="#services">Services</a>
@@ -348,6 +373,12 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       <div class="scrim" aria-hidden="true"></div>
       <div class="grain" aria-hidden="true"></div>
 
+      <div class="wm" aria-hidden="true">
+        <div class="wm-fill"><div class="wm-t"><span class="wm-in">Silent <span class="wm-w2">Raven</span></span></div></div>
+        <div class="wm-line"><div class="wm-t"><span class="wm-in">Silent <span class="wm-w2">Raven<span class="wm-agency">agency</span></span></span></div></div>
+      </div>
+      <p class="sr-only">Silent Raven Agency</p>
+
       <div class="band fx-blur" data-a="0" data-b="0.22" data-ramp="0.05">
         <p class="line"><span class="sr-only">Most web projects start in a fog.</span><span class="stack" aria-hidden="true"><span class="soft">Most web projects start in a fog.</span><span class="sharp">Most web projects start in a fog.</span></span></p>
       </div>
@@ -361,7 +392,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       </div>
 
       <div class="band fx-rise" data-a="0.78" data-b="1" data-ramp="0.07">
-        <h1 data-split>Websites, out of the fog.</h1>
+        <h1 data-split data-accent-from="1">Websites, out of the fog.</h1>
         <p class="sub">Silent Raven builds custom websites for local businesses. AI drafts them fast. People make them yours.</p>
         <div class="cta-row">
           <a class="btn" href="#contact">Book a free call</a>
@@ -375,7 +406,9 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     <div class="static-hero">
       <div class="sbg" aria-hidden="true"></div>
       <div class="inner">
-        <h1>Websites, out of the fog.</h1>
+        <p class="s-wm" aria-hidden="true"><span>Silent</span><span class="r">Raven<i>agency</i></span></p>
+        <p class="sr-only">Silent Raven Agency</p>
+        <h1>Websites,<br><span class="ac">out of the fog.</span></h1>
         <p>Silent Raven builds custom websites for local businesses. AI drafts them fast. People make them yours.</p>
         <a class="btn" href="#contact">Book a free call</a>
       </div>
@@ -557,7 +590,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 <footer class="foot">
   <div class="wrap">
     <div>
-      <a class="brand" href="#top">silent raven</a>
+      <a class="brand" href="#top">Silent Raven</a>
       <p class="tagline">Silent Raven Agency. Websites, out of the fog.</p>
     </div>
     <p class="ai">The hero film and images on this page were made with AI and directed by people. That is how we work.</p>
@@ -584,6 +617,8 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     words.forEach((w, i) => {
       const s = document.createElement('span'); s.className = 'w'; s.textContent = w;
       s.style.setProperty('--th', (i / words.length * 0.42).toFixed(3));
+      if (el.dataset.accentFrom !== undefined && i >= +el.dataset.accentFrom) s.classList.add('ac');
+      if (el.dataset.accentFrom !== undefined && i === +el.dataset.accentFrom) vis.append(document.createElement('br'));
       vis.append(s);
       if (i < words.length - 1) vis.append(' ');
     });
@@ -605,6 +640,18 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     heroRange = Math.max(1, hero.offsetHeight - innerHeight);
   }
   const heroProgress = () => clamp((scrollY - heroTop) / heroRange, 0, 1);
+
+  // the wordmark is sized to span the stage edge to edge
+  const wmBox = $('.wm-line .wm-t'), wmText = $('.wm-line .wm-in');
+  let wmSize = 0;
+  function fitWordmark() {
+    if (!wmBox || !wmBox.clientWidth) return;
+    const cur = parseFloat(getComputedStyle(wmBox).fontSize);
+    const w = wmText.getBoundingClientRect().width;
+    if (!w) return;
+    const next = Math.min(cur * wmBox.clientWidth / w, innerHeight * 0.3);
+    if (Math.abs(next - cur) > 0.5) { wmSize = next; stage.style.setProperty('--wm', next.toFixed(1) + 'px'); }
+  }
 
   let videoReady = false, videoFailed = false;
   let loadK = 0, loadStart = 0;
@@ -714,6 +761,10 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     const img = new Image(); img.onload = start; img.onerror = start; img.src = 'assets/hero-poster.jpg';
     setTimeout(start, 4000);
     requestAnimationFrame(loadRamp);
+    requestAnimationFrame(() => stage.classList.add('wm-on'));
+    // refit whenever the wordmark's own width changes, for example when its font finishes loading
+    if (document.fonts && document.fonts.load) document.fonts.load('800 100px Lexend').then(() => { fitWordmark(); fitWordmark(); }).catch(() => {});
+    if ('ResizeObserver' in window) new ResizeObserver(() => { if (scrubOn) fitWordmark(); }).observe(wmText);
   }
 
   /* ---------- the five static-hero gates, decided live ---------- */
@@ -728,6 +779,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   function enableScrub() {
     if (scrubOn) return; scrubOn = true;
     measure();
+    fitWordmark(); fitWordmark();
     initHeroOnce();
     addEventListener('scroll', onScroll, { passive: true });
     bands.forEach(b => { b.op = -1; b.k = -1; });
@@ -750,7 +802,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   }
   const MQLS = GATES.map(q => matchMedia(q));
   MQLS.forEach(m => m.addEventListener('change', applyHeroMode));
-  addEventListener('resize', () => { measure(); if (scrubOn) onScroll(); schedulePage(); }, { passive: true });
+  addEventListener('resize', () => { measure(); if (scrubOn) { fitWordmark(); fitWordmark(); onScroll(); } schedulePage(); }, { passive: true });
 
   /* ---------- page-level scroll: the fog thins as you go, the nav settles ---------- */
   const nav = $('.nav');
